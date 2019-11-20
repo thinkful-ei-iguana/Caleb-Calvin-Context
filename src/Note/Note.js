@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { format } from "date-fns";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Note.css";
-import noteContext from "./NoteContext";
+import noteContext from "../NoteContext";
 
 export default class Note extends React.Component {
   static contextType = noteContext;
@@ -25,6 +25,7 @@ export default class Note extends React.Component {
       })
       .then(data => {
         this.context.deleteNote(this.props.id);
+        this.props.handleDeleteNote(this.props.id);
       })
       .catch(e => console.log(e));
   };
